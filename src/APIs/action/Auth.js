@@ -5,7 +5,7 @@ import { USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS } from "../c
 const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
   try {
-    const { data } = await Axios.post('https://drust-daam.herokuapp.com/api/signin', { email, password })
+    const { data } = await Axios.post('https://api', { email, password })
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     await SecureStore.setItemAsync('userInfo', JSON.stringify(data) );
   } catch (error) {
